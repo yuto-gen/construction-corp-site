@@ -11,7 +11,7 @@ const Projects = () => {
           </div>
         </div>
         <div className="bg-gray-light rounded-lg overflow-hidden shadow">
-          <img src="/images/residential-complex.png" alt="Project 2" className="w-full h-48 object-cover" />
+          <img src="/images/Residential Complex.png" alt="Project 2" className="w-full h-48 object-cover" />
           <div className="p-4">
             <h3 className="font-semibold text-lg">住宅団地</h3>
             <p className="text-gray">現代的な設備を備えた持続可能な住宅ユニット。</p>

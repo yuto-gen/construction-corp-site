@@ -1,27 +1,51 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const Header = () => {
-  return (
-    <header className="bg-brand-dark text-white shadow-md">
-      <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
-        <Link to="/" className="text-2xl font-serif tracking-wide">
-          BuildCorp
-        </Link>
+  const [isOpen, setIsOpen] = useState(false);
 
-        <nav className="hidden md:flex gap-6">
-          <Link to="/about" className="hover:text-accent transition">About</Link>
-          <Link to="/services" className="hover:text-accent transition">Services</Link>
-          <Link to="/projects" className="hover:text-accent transition">Projects</Link>
-          <Link to="/contact" className="hover:text-accent transition">Contact</Link>
+  return (
+    <header className="sticky top-0 z-50 bg-white shadow-md">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" className="text-2xl font-serif font-bold text-brand-dark">
+          BuildCorp
+        </a>
+
+        <nav className="hidden md:flex space-x-6 text-gray-700 font-medium">
+          <a href="/about" className="hover:text-brand-dark transition">
+            会社概要
+          </a>
+          <a href="/projects" className="hover:text-brand-dark transition">
+            実績紹介
+          </a>
+          <a href="/contact" className="hover:text-brand-dark transition">
+            お問い合わせ
+          </a>
         </nav>
 
-        <Link
-          to="/contact"
-          className="ml-4 bg-accent text-black font-semibold px-4 py-2 rounded hover:bg-yellow-400"
+        <button
+          className="md:hidden text-gray-700"
+          onClick={() => setIsOpen(!isOpen)}
         >
-          Get a Quote
-        </Link>
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
+
+      {isOpen && (
+        <div className="md:hidden bg-white shadow-md">
+          <nav className="flex flex-col items-center space-y-4 py-6 text-gray-700 font-medium">
+            <a href="/about" className="hover:text-brand-dark transition" onClick={() => setIsOpen(false)}>
+              会社概要
+            </a>
+            <a href="/projects" className="hover:text-brand-dark transition" onClick={() => setIsOpen(false)}>
+              実績紹介
+            </a>
+            <a href="/contact" className="hover:text-brand-dark transition" onClick={() => setIsOpen(false)}>
+              お問い合わせ
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
